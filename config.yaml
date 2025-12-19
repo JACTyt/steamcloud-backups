@@ -1,0 +1,4 @@
+#backup_dir: D:/GameBackups
+backup_dir: D:\GitHub\steam-save-backup-tool\backups
+keep_versions: 5
+steam_path: C:/Program Files (x86)/Steam
