@@ -5,7 +5,8 @@ from src.zipper import zip_save
 from src.steam_name_getter import get_steam_game_name
 from src.config_reader import read_config
 
-CONFIG = read_config()
+CONFIG_PATH = Path(__file__).parent / "config.yaml"
+CONFIG = read_config(CONFIG_PATH)
 BACKUP_DIR = Path(CONFIG.get("backup_dir", "backups"))
 BACKUP_DIR.mkdir(parents=True, exist_ok=True)
 STEAM_PATH = Path(CONFIG.get("steam_path", "C:/Program Files (x86)/Steam"))

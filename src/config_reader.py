@@ -1,8 +1,7 @@
 from pathlib import Path
 import yaml
 
-def read_config() -> dict:
-    config_path = Path(__file__).parent.parent / "config.yaml"
+def read_config(config_path: Path) -> dict:
     if not config_path.exists():
         print(f"Config file not found: {config_path}")
         return {}

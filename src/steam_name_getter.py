@@ -8,7 +8,4 @@ def get_steam_game_name(appid):
             return resp[str(appid)]["data"]["name"]
     except Exception as e:
         print("Error fetching app name:", e)
-    return None
-
-# Example
-#print(get_steam_game_name(570))  # Dota 2
+    return "Unknown application"
