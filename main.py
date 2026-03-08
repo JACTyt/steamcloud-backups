@@ -4,6 +4,7 @@ from src.scanner import scan_steam_saves_by_account
 from src.zipper import zip_save
 from src.steam_name_getter import get_steam_game_name
 from src.config_reader import read_config
+from src.ui import run
 
 CONFIG_PATH = Path(__file__).parent / "config.yaml"
 CONFIG = read_config(CONFIG_PATH)
@@ -25,4 +26,4 @@ def main():
             print(f"✔ Backed up {game_name} (AppID: {game_id}) (SteamID: {steam_id})")
             
 if __name__ == "__main__":
-    main()
+    run()

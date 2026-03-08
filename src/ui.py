@@ -5,11 +5,11 @@ from datetime import datetime
 import threading
 import yaml
 
-from scanner import scan_steam_saves_by_account
-from steam_name_getter import get_steam_game_name
-from steam_paths import get_steam_userdata_path
-from zipper import zip_save
-from config import get_config
+from src.scanner import scan_steam_saves_by_account
+from src.steam_name_getter import get_steam_game_name
+from src.steam_paths import get_steam_userdata_path
+from src.zipper import zip_save
+from src.config import get_config
 
 class GameSaveBackupUI:
     def __init__(self, root):
@@ -419,7 +419,11 @@ class GameSaveBackupUI:
         
         self.log_msg("Settings dialog opened.")
 
-if __name__ == "__main__":
+
+def run():
     root = tk.Tk()
     app = GameSaveBackupUI(root)
     root.mainloop()
+
+if __name__ == "__main__":
+    run()

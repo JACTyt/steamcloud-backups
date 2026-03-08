@@ -9,15 +9,17 @@ SteamCloud Backups scans local Steam `userdata` folders and creates ZIP backups 
 - Finds game save folders that contain a `remote` directory.
 - Creates timestamped ZIP backups per game and Steam account.
 - Resolves game names via Steam Store API when possible.
+- Provides a Tkinter UI for scan, selection, backup, and settings updates.
 
 ## Current Behavior
 
-- Main entrypoint is `main.py`.
+- `main.py` starts the desktop UI (`src.ui.run()`).
 - Backups are stored under `<backup_dir>/<steam_id>/`.
 - ZIP filename format:
 	`<game_name>_<steam_id>_<YYYY.MM.DD_HH:MM>.zip`
 - If game name lookup fails, filename uses `Unknown application`.
 - Every run creates new ZIPs; old backups are not pruned.
+- Scan is asynchronous (background thread), so the UI remains responsive while scanning.
 
 ## Requirements
 
@@ -60,6 +62,12 @@ Run from project root:
 python main.py
 ```
 
+Alternative:
+
+```bash
+python src/ui.py
+```
+
 Example console output:
 
 ```text
@@ -69,20 +77,28 @@ Example console output:
 
 ## Project Structure
 
-- `main.py`: CLI workflow (scan + backup).
+- `main.py`: App entrypoint (launches UI).
+- `src/config.py`: Centralized config loading and validation.
 - `src/config_reader.py`: Reads YAML config.
 - `src/steam_paths.py`: Builds Steam `userdata` path.
 - `src/scanner.py`: Detects save folders by account/AppID.
 - `src/steam_name_getter.py`: Fetches game names from Steam API.
 - `src/zipper.py`: Creates ZIP archives.
-- `src/ui.py`: Tkinter UI prototype.
+- `src/ui.py`: Tkinter UI (scan, select, backup, settings).
 
 ## Notes and Limitations
 
 - Backup retention is not implemented (`keep_versions` is ignored).
-- `src/ui.py` uses direct module imports and may require import path adjustments if run as-is.
 - No built-in validation for invalid `steam_path` or missing permissions.
 - API/network failures do not stop backup; they only affect displayed game names.
+
+## UI Features
+
+- `Scan Saves`: Scans accounts/games and fills a tree view.
+- `Backup All`: Backs up all discovered saves.
+- `Backup Selected`: Backs up checked games only.
+- `Settings`: Edit `backup_dir`, `steam_path`, and `keep_versions` in-app.
+- Progress bar, status text, and timestamped log panel.
 
 ## License
 

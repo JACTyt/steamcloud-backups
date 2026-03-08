@@ -1,5 +1,5 @@
 from pathlib import Path
-from config_reader import read_config
+from src.config_reader import read_config
 
 # Default configuration values
 DEFAULT_CONFIG = {
