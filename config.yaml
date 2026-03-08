@@ -1,4 +1,3 @@
-#backup_dir: D:/GameBackups
 backup_dir: D:\Repos\Github\steamcloud-backups\backups
 keep_versions: 5
-steam_path: C:/Program Files (x86)/Steam
+steam_path: C:\Program Files (x86)\Steam
