@@ -1,3 +1,7 @@
 __pycache__
 backups
 .env
+
+.venv
+.vscode
+.idea
